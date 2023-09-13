@@ -1321,9 +1321,15 @@
             //     }));
             // }));
             $(this.hookSelector).last().append(BiliImgService.tripleClickBtn), $("body").on("click", "#tripleClick", (function() {
-                [ ".video-like", ".coin", ".collect" ].forEach((function(item) {
-                    $(item).trigger("click");
-                }));
+                let sm = document.querySelectorAll("a[href*='acg.tv/sm']");
+                if (sm != 0) {
+                    for (var i = 0; i < (sm.length); i += 1) {
+                        let smNum = sm[i].innerHTML;
+                        sm[i].classList.add("smLink");
+                        sm[i].setAttribute("href", "https://www.nicovideo.jp/watch/" + smNum);
+                        sm[i].innerHTML = "跳转" + smNum;
+                    }
+                }
             }));
         }, BiliImgService.coverBtn = '<button class="okv-btn okv-btn-primary okv-bg-pink bili-top-button" id="findimg">\u83b7\u53d6\u5c01\u9762</button>', 
         BiliImgService.downBtn = '<button id="downvideo" class="okv-btn okv-btn-primary okv-bg-pink bili-top-button">\u4e0b\u8f7d\u89c6\u9891</button>', 
